@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import { Link } from 'react-router-dom'
+
 const Conatiner = styled.div`
     // border: 1px solid white;
     width: 250px;
@@ -11,15 +13,17 @@ const Conatiner = styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    cursor: pointer;
+    transition: all .5s ease;
 
     img{
+        cursor: pointer;
         width: 80%;
         height: 70%;
         object-fit: contain;
     }
 
     h5{
+        cursor: pointer;
         margin: 5px 0px;
         font-size: 1rem;
         text-align: center;
@@ -31,15 +35,22 @@ const Conatiner = styled.div`
     p{
         font-size: 15px;
     }
+
+    :hover{
+        transform: scale(1.1); 
+    }
 `
-const Movie = ({movie}) => {
+
+const MovieCart = ({movie}) => {
     return (
-        <Conatiner>
-            <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
-            <h5>{movie.title}</h5>
-            <p>Rating: {movie.vote_average}</p>
-        </Conatiner>
+        <Link style={{textDecoration: 'none', color: 'white'}} to={`/${movie.id}`} >
+            <Conatiner>
+                    <img  src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
+                    <h5>{movie.title}</h5>
+                    <p>Rating: {movie.vote_average}</p>
+            </Conatiner>
+        </Link>
     )
 }
 
-export default Movie
+export default MovieCart

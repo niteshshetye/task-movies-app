@@ -1,7 +1,9 @@
 import Navbar from "../components/Navbar";
-import Popular from '../pages/Popular'
-import Top from '../pages/Top'
-import Upcoming from '../pages/Upcoming'
+import PopularPage from '../pages/Popular'
+import TopPage from '../pages/Top'
+import UpcomingPage from '../pages/Upcoming'
+import SingleMoviePage from "../pages/SingleMovie";
+
 import './App.css'
 
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
@@ -12,13 +14,16 @@ const App = () => {
       <Navbar />
       <Switch>
         <Route exact path='/'>
-          <Popular />
+          <PopularPage />
         </Route>
         <Route exact path='/toprated'>
-          <Top />
+          <TopPage />
         </Route>
         <Route exact path='/upcoming'>
-          <Upcoming />
+          <UpcomingPage />
+        </Route>
+        <Route exact path='/:id'>
+          <SingleMoviePage />
         </Route>
       </Switch>
     </Router>

@@ -1,7 +1,7 @@
 import React from 'react'
 import Movies from '../../components/Movies'
 
-const Top = () => {
+const TopPage = () => {
     // console.log("TOP", props)
     return (
         <>
@@ -10,4 +10,4 @@ const Top = () => {
     )
 }
 
-export default Top
+export default TopPage

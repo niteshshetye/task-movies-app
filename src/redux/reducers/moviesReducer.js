@@ -2,12 +2,17 @@ import {
     POPULAR_MOVIES_FETCHED,
     TOP_RATED_MOVIES_FETCHED,
     UPCOMING_MOVIES_FETCHED,
-    MOVIES_SEARCHED
+    MOVIES_SEARCHED,
+    CLEAR_SEARCHED,
+    SINGLE_MOVIE_FETCHED,
+    CAST_LIST_FETCHED
 } from '../actionsTypes'
 
 const initialState = {
     movies: [],
-    filterdMovies: []
+    filterdMovies: [],
+    currentMovie: {},
+    castList: []
 }
 
 export const moviesReducer = (state=initialState, action) => {
@@ -29,6 +34,12 @@ export const moviesReducer = (state=initialState, action) => {
                 ...state,
                 movies: [...action.payload]
             }
+        
+        case SINGLE_MOVIE_FETCHED:
+            return {
+                ...state,
+                currentMovie: {...action.payload}
+            }
 
         case MOVIES_SEARCHED:{
             return {
@@ -36,7 +47,21 @@ export const moviesReducer = (state=initialState, action) => {
                 filterdMovies: [...action.payload]
             }
         }
+
+        case CAST_LIST_FETCHED:{
+            return {
+                ...state,
+                castList: [...action.payload]
+            }
+        }
         
+        case CLEAR_SEARCHED: {
+            return {
+                ...state,
+                filterdMovies: []
+            }
+        }
+
         default: 
             return state
     }

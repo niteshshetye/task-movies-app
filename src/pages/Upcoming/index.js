@@ -1,7 +1,7 @@
 import React from 'react'
 import Movies from '../../components/Movies'
 
-const Upcoming = () => {
+const UpcomingPage = () => {
     // console.log("Upcomming",props)
 
     return (
@@ -11,4 +11,4 @@ const Upcoming = () => {
     )
 }
 
-export default Upcoming
+export default UpcomingPage

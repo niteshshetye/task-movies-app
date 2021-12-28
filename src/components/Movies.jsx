@@ -1,4 +1,4 @@
-import React,{useEffect, useState} from 'react'
+import React,{useEffect} from 'react'
 // redux
 import {useDispatch, useSelector} from 'react-redux'
 // actions
@@ -6,7 +6,7 @@ import {fetchPopular} from '../redux/actions/PopularMoviesAction'
 import {fetchTopRated} from '../redux/actions/TopMoviesAction'
 import {fetchUpcoming} from '../redux/actions/UpcomingMoviesAction'
 // component
-import Movie from './Movie'
+import MovieCart from './MovieCart'
 
 import styled from 'styled-components'
 
@@ -23,10 +23,8 @@ const Container = styled.div`
 
 
 const Movies = ({moviesType}) => {
-    const {movies} = useSelector(state => state.movies);
-    const state = useSelector(state => state.movies);
+    const {movies, filterdMovies} = useSelector(state => state.movies);
     const dispatch = useDispatch();
-    console.log("state: ", state);
 
     const fetchType = moviesType ==='upcoming'? fetchUpcoming: moviesType === 'toprated'? fetchTopRated: fetchPopular
 
@@ -37,8 +35,10 @@ const Movies = ({moviesType}) => {
     return (
         <Container>
             {
-                movies.map(movie => (
-                    <Movie key={movie.id} movie={movie} />
+                filterdMovies.length !== 0? filterdMovies.map(movie => (
+                    <MovieCart key={movie.id} movie={movie} />
+                )) : movies.map(movie => (
+                    <MovieCart key={movie.id} movie={movie} />
                 ))
             }
         </Container>

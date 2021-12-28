@@ -1,7 +1,7 @@
 import React from 'react'
 import Movies from '../../components/Movies'
 
-const Popular = () => {
+const PopularPage = () => {
     // console.log("POPULAR",props)
     return (
         <>
@@ -10,4 +10,4 @@ const Popular = () => {
     )
 }
 
-export default Popular
+export default PopularPage
